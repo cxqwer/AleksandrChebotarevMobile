@@ -2,6 +2,9 @@ package additionalParameters;
 
 import org.openqa.selenium.remote.CapabilityType;
 
+/**
+ * addition capabilities which are not in org.openqa.selenium.remote
+ **/
 public interface AdditionalCapabilityType extends CapabilityType {
     String PATH_APK="pathApk";
     String APK_NAME="apkName";

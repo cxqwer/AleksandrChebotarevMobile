@@ -16,6 +16,10 @@ import static io.appium.java_client.remote.MobileCapabilityType.DEVICE_NAME;
 import static org.openqa.selenium.remote.BrowserType.CHROME;
 import static org.openqa.selenium.remote.BrowserType.SAFARI;
 
+/**
+ * Initialize driver with appropriate capabilities depending on platform and type of testing
+ **/
+
 public class DriverSetup {
     private static AppiumDriver appiumDriver;
     private static WebDriverWait webDriverWait;
@@ -25,7 +29,7 @@ public class DriverSetup {
     private static String pathApk;
     private static String apkName;
     private static String driverUrl;
-    private static String webUrl;
+    public static String webUrl;
 
     private DriverSetup() {
     }
@@ -56,12 +60,10 @@ public class DriverSetup {
         capabilities.setCapability(PLATFORM_NAME, platformName);
 
         if (apkName != null && webUrl == null) {
-            // Native:
             File appDir = new File(pathApk);
             File app = new File(appDir, apkName);
             capabilities.setCapability(APP, app.getAbsolutePath());
         } else if (webUrl != null && apkName == null) {
-            // Web:
             capabilities.setCapability(BROWSER_NAME, browserName);
         } else {
             throw new IllegalArgumentException("Unknown type of mobile app");
@@ -82,4 +84,4 @@ public class DriverSetup {
         return webDriverWait;
     }
 
-    }
+}

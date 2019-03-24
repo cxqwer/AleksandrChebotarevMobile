@@ -1,5 +1,9 @@
 package NativeMobileTestData;
 
+/**
+ * store of locators of NativeMobileTest (remove the hardcore )
+ */
+
 public enum AppiumNativeTestElements {
     ADD_CONTACT_BUTTON("com.example.android.contactmanager:id/addContactButton"),
     ACCOUNT_SPINNER("com.example.android.contactmanager:id/accountSpinner"),

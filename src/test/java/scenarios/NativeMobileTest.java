@@ -4,22 +4,24 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
-import java.net.MalformedURLException;
+import java.io.IOException;
 
-import static config.DriverSetup.driver;
 import static NativeMobileTestData.AppiumNativeTestElements.*;
+import static config.DriverSetup.driver;
 import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertTrue;
 
+/**
+ * This simple test just click on button 'Add contact' and check elements
+ */
 
 @Test(groups = "native")
 public class NativeMobileTest {
-    @Test(description = "Click button 'Add Contact' and check elements is exists")
-    /**
-     * This simple test just click on button 'Add contact'
-     */
-    public void SimplestTest() throws MalformedURLException {
-        //1 Click 'Add Contact'.
+
+    @Test
+    public void SimplestTest() throws IOException {
+
+        //1 Click button 'Add Contact'
         WebElement abbButton = driver().findElement(By.id(ADD_CONTACT_BUTTON.id));
         abbButton.click();
 
@@ -35,11 +37,11 @@ public class NativeMobileTest {
         WebElement name = driver().findElement(By.id(CONTACT_NAME_EDIT_TEXT.id));
         assertTrue(name.isDisplayed());
 
-        //5 Assert 'Contact E-mail' field is exists
+        //5 Check 'Contact E-mail' field is exists
         WebElement email = driver().findElement(By.id(CONTACT_EMAIL_EDIT_TEXT.id));
         assertTrue(email.isDisplayed());
 
-        // 6 Check keyboard pops up
+        // 6 Check keyboard is visible
         assertNotNull(driver().getKeyboard());
 
         System.out.println("Native mobile test complete");

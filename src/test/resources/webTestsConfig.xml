@@ -1,0 +1,18 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Web Test Suite" verbose="1">
+
+    <parameter name="configFile" value="web.properties"/>
+    <test name="Web Test">
+        <groups>
+            <run>
+                <include name="web"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="separateClasses.Hooks"/>
+            <class name="scenarios.WebMobileTests"/>
+        </classes>
+    </test>
+
+</suite>

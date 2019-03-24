@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+/**
+ * reads by key properties from file
+ */
 public class TestPropertiesReader {
     private static String driverCapabilities;
     private static Properties driverProperties = new Properties();
