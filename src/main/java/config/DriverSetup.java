@@ -11,8 +11,9 @@ import java.net.URL;
 
 import static config.TestPropertiesReader.getProperty;
 import static additionalParameters.AdditionalCapabilityType.*;
-import static io.appium.java_client.remote.MobileCapabilityType.APP;
-import static io.appium.java_client.remote.MobileCapabilityType.DEVICE_NAME;
+import static io.appium.java_client.remote.AndroidMobileCapabilityType.APP_ACTIVITY;
+import static io.appium.java_client.remote.AndroidMobileCapabilityType.APP_PACKAGE;
+import static io.appium.java_client.remote.MobileCapabilityType.*;
 import static org.openqa.selenium.remote.BrowserType.CHROME;
 import static org.openqa.selenium.remote.BrowserType.SAFARI;
 
@@ -25,22 +26,25 @@ public class DriverSetup {
     private static WebDriverWait webDriverWait;
 
     private static String platformName;
-    private static String deviceName;
+    private static String udid;
     private static String pathApk;
-    private static String apkName;
     private static String driverUrl;
     public static String webUrl;
+    private static String appPackage;
+    private static String appActivity;
 
     private DriverSetup() {
     }
 
     public static void setProperties() throws IOException {
         platformName = getProperty(PLATFORM_NAME);
-        deviceName = getProperty(DEVICE_NAME);
+        udid = getProperty(UDID);
         pathApk = getProperty(PATH_APK);
-        apkName = getProperty(APK_NAME);
         driverUrl = getProperty(DRIVER_URL);
         webUrl = getProperty(WEB_URL);
+        appPackage=getProperty(APP_PACKAGE);
+        appActivity=getProperty(APP_ACTIVITY);
+
     }
 
     public static void prepareDriver() throws MalformedURLException {
@@ -48,7 +52,6 @@ public class DriverSetup {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         switch (platformName) {
             case ANDROID:
-                capabilities.setCapability(DEVICE_NAME, deviceName);
                 browserName = CHROME;
                 break;
             case iOS:
@@ -57,13 +60,14 @@ public class DriverSetup {
             default:
                 throw new IllegalArgumentException("Unknown mobile platform: " + platformName);
         }
+
+        capabilities.setCapability(UDID, udid);
         capabilities.setCapability(PLATFORM_NAME, platformName);
 
-        if (apkName != null && webUrl == null) {
-            File appDir = new File(pathApk);
-            File app = new File(appDir, apkName);
-            capabilities.setCapability(APP, app.getAbsolutePath());
-        } else if (webUrl != null && apkName == null) {
+        if (pathApk != null && webUrl == null) {
+            capabilities.setCapability(APP_PACKAGE, appPackage);
+            capabilities.setCapability(APP_ACTIVITY, appActivity);
+        } else if (webUrl != null && pathApk == null) {
             capabilities.setCapability(BROWSER_NAME, browserName);
         } else {
             throw new IllegalArgumentException("Unknown type of mobile app");

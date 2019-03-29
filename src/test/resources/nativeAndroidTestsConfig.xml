@@ -2,7 +2,7 @@
 
 <suite name="Native Test Suite" verbose="1">
 
-    <parameter name="configFile" value="native.properties"/>
+    <parameter name="configFile" value="nativeAndroid.properties"/>
     <test name="Native Test">
         <groups>
             <run>
