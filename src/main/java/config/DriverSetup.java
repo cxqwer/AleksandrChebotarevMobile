@@ -4,16 +4,15 @@ import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import static config.TestPropertiesReader.getProperty;
 import static additionalParameters.AdditionalCapabilityType.*;
+import static config.TestPropertiesReader.getProperty;
 import static io.appium.java_client.remote.AndroidMobileCapabilityType.APP_ACTIVITY;
 import static io.appium.java_client.remote.AndroidMobileCapabilityType.APP_PACKAGE;
-import static io.appium.java_client.remote.MobileCapabilityType.*;
+import static io.appium.java_client.remote.MobileCapabilityType.UDID;
 import static org.openqa.selenium.remote.BrowserType.CHROME;
 import static org.openqa.selenium.remote.BrowserType.SAFARI;
 
