@@ -83,5 +83,4 @@ public class DriverSetup {
         if (webDriverWait == null) prepareDriver();
         return webDriverWait;
     }
-
 }
