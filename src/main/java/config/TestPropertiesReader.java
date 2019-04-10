@@ -27,4 +27,10 @@ public class TestPropertiesReader {
     public static void setConfigFile(String configFileName){
         driverCapabilities = configFileName;
     }
+
+    public static void main(String[] args) {
+        driverCapabilities="nativeAndroid.properties";
+        System.out.println(getProperty("appPackage"));
+        System.out.println(getProperty("activity"));
+    }
 }

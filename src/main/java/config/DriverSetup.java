@@ -43,7 +43,6 @@ public class DriverSetup {
         webUrl = getProperty(WEB_URL);
         appPackage=getProperty(APP_PACKAGE);
         appActivity=getProperty(APP_ACTIVITY);
-
     }
 
     public static void prepareDriver() throws MalformedURLException {
